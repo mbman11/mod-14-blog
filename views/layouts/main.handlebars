@@ -2,30 +2,33 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
-  <link rel="stylesheet" href="/public/style.css">
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 
 {{!-- main layout  --}}
-{{!-- has body of 'all.hbs' --}}
+{{!-- has body of 'home.hbs' --}}
 
   <nav>
+
     <div class="site-title">
       <a href="/"><h1>Blog Ninja!</h1></a>
-      <p>A Net Ninja Site</p>
     </div>
+
     <ul>
       <li><a href="/">Home</a></li>
       <li><a href="/blogs">Blogs</a></li>
       <li><a href="/blogs/create">New Blog</a></li>
+      <li><button>Log In</button></li>
     </ul>
+    
   </nav>
 
 
      {{{ body }}}
 
  
-  </div>
+  
 
 </body>
 </html>
