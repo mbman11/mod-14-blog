@@ -9,11 +9,11 @@ const path = require('path');
 
 
 router.get('/', (req,res)=>{
-  res.render('all')
+  res.render('home')
 })
 
-router.get('/about', (req,res)=>{
-  res.render('about')
+router.get('/blogs', (req,res)=>{
+  res.render('blogs')
 })
 
 router.get('/blogs/create', (req,res) => {
