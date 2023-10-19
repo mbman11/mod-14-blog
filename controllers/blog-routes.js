@@ -6,10 +6,21 @@ const path = require('path');
 // router.get('/', async (req,res)=> {
 //   res.sendFile(path.join(__dirname,'../views/index.html'))
 // })
-
+const blogs = [
+  {
+    id:1,
+    title: 'How To Code',
+    author: 'John Foe'
+  },
+  {
+    id:2,
+    title: 'Do something good',
+    author: 'Joe Doe'
+  }
+]
 
 router.get('/', (req,res)=>{
-  res.render('home')
+  res.render('home', { blogs })
 })
 
 router.get('/blogs', (req,res)=>{
