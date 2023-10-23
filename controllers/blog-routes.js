@@ -58,17 +58,17 @@ const Blog = require('../models/blog')
 
 // route to get all blogs
 router.get('/', async (req, res) => {
-    // We find all dishes in the db and set the data equal to dishData
+    // We find all blogs in the db and set the data equal to blogData
     const blogData = await Blog.findAll().catch((err) => { 
       res.json(err);
     });
-    // We use map() to iterate over dishData and then add .get({ plain: true }) each object to serialize it. 
+    // We use map() to iterate over blogData and then add .get({ plain: true }) each object to serialize it. 
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
-    // We render the template, 'all', passing in dishes, a new array of serialized objects.
+    // We render the template, 'all', passing in blogs, a new array of serialized objects.
     res.render('all', { blogs });
     });
 
-// route to get one dish
+// route to get one blog
 router.get('/blog/:id', async (req, res) => {
   try{ 
       const blogData = await Blog.findByPk(req.params.id);
