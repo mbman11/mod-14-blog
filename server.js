@@ -1,13 +1,12 @@
+const path = require('path');
 const express = require('express');
 const exphbs = require('express-handlebars');
-const path = require('path');
 const hbs = exphbs.create({});
-require("dotenv").config();
-
-
-// sets up express app
 const app = express();
-const PORT = 3001;
+require("dotenv").config();
+const PORT = process.env.PORT || 3001;
+const sequelize = require('./config/connection');
+
 
 // use handlebars engine
 app.set('view engine', 'handlebars');
@@ -15,12 +14,14 @@ app.engine('handlebars', hbs.engine);
 
 
 //middleware
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(require('./controllers/blog-routes.js'));
+
+app.use(require('./controllers/blog-routes'));
 
 //listen for port
-app.listen(PORT, () =>{
-  console.log(`listening at: http//:localhost:${PORT}`);
+sequelize.sync({ force: false }).then(()=> {
+  app.listen(PORT, () => console.log('Now Listening'));
 });
-
 

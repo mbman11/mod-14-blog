@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Ninja</title>
+</head>
+<body>
+
+  <div class="blogs content">
+    <h2>All Blogs</h2>
+  {{#each blogs as |blog|}}
+
+
+  <div>
+    <ol>
+      <li>
+        {{!-- title: How To Code, by: John Foe
+            text: 'coding is hard and it is driving me crazy... one day ill get it but its pissing me off' --}}
+
+            {{blog.id}},
+            {{blog.title}},
+            {{blog.author}},
+            {{blog.text}}
+      </li>
+
+            <li>
+        {{!-- title: Do Something Good, by: John Doe
+            text: 'this is a psa to do something good in the world because theres too much bad already!' --}}
+      </li>
+    </ol>
+  </div>
+{{/each}}
+  </div>
+</body>
+</html>
