@@ -7,10 +7,11 @@ router.get('/', async (req, res) => {
     const blogData = await Blog.findAll().catch((err) => { 
       res.json(err);
     });
-    // We use map() to iterate over blogData and then add .get({ plain: true }) each object to serialize it. 
+
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
     // We render the template, 'all', passing in blogs, a new array of serialized objects.
-    res.render('all', { blogs });
+    res.render('all', {blogs});
+    console.log(blogs);
     });
 
 // route to get one blog
@@ -21,7 +22,9 @@ router.get('/blogs/:id', async (req, res) => {
           res.status(404).json({message: 'No blog with this id!'});
           return;
       }
+
       const blogs = blogData.get({ plain: true });
+      console.log(blogs)
       res.render('blog', blogs);
     } catch (err) {
         res.status(500).json(err);
