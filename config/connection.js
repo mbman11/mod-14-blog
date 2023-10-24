@@ -16,3 +16,5 @@ module.exports = sequelize;
 
 
 // mysql -u root -p //
+// npm run seeds //
+// node server.js //

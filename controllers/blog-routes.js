@@ -14,18 +14,26 @@ router.get('/', async (req, res) => {
     });
 
 // route to get one blog
-router.get('/blog/:id', async (req, res) => {
+router.get('/blogs/:id', async (req, res) => {
   try{ 
       const blogData = await Blog.findByPk(req.params.id);
       if(!blogData) {
           res.status(404).json({message: 'No blog with this id!'});
           return;
       }
-      const blog = blogData.get({ plain: true });
-      res.render('blog', dish);
+      const blogs = blogData.get({ plain: true });
+      res.render('blog', blogs);
     } catch (err) {
         res.status(500).json(err);
     };     
 });
+
+router.get('/dashboard', (req,res)=>{
+  res.render('dashboard')
+})
+
+router.get('/create-post', (req,res)=>{
+  res.render('createPost')
+})
 
 module.exports = router;
