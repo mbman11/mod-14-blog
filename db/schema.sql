@@ -10,6 +10,7 @@ USE blog_db;
 
 CREATE TABLE blog;
 CREATE TABLE users;
+
 -- See database in use --
 SELECT DATABASE();
 

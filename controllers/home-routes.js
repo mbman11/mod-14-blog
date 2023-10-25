@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Blog = require('../models/Blog')
+// const Blog = require('../models/Blog')
 
 // route to get all blogs
 router.get('/', async (req, res) => {
@@ -55,8 +56,8 @@ router.get('/create-post', (req,res)=>{
 
 
 
-router.get('/login', (req,res)=>{
-  res.render('login')
+router.get('/create-user', (req,res)=>{
+  res.render('createUser')
 })
 
 

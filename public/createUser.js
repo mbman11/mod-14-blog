@@ -1,32 +1,24 @@
-
-const submitBtn = document.getElementById('submit-btn');
-
-submitBtn.addEventListener("click", async function(event){
-  console.log("helloo")
+const signupFormHandler = async (event) => {
   event.preventDefault();
 
-  const title = document.querySelector('#blog-title').value.trim();
-  const author = document.querySelector('#blog-author').value.trim();
-  const text = document.querySelector('#blog-text').value.trim();
-  
-  if (title && author && text) {
-    const response = await fetch(`/api/blogs`, {
+  const name = document.querySelector('#name-signup').value.trim();
+  const email = document.querySelector('#email-signup').value.trim();
+  const password = document.querySelector('#password-signup').value.trim();
+
+  if (name && email && password) {
+    const response = await fetch('/api/users', {
       method: 'POST',
-      body: JSON.stringify({ title, author, text }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      body: JSON.stringify({ name, email, password }),
+      headers: { 'Content-Type': 'application/json' },
     });
 
     if (response.ok) {
-      document.location.replace('/');
-      console.log('blog added')
+      document.location.replace('/profile');
     } else {
-      alert('Failed to create project');
+      alert(response.statusText);
     }
   }
-});
-
+};
 
 
 // const loginBtn = document.getElementById('login');
@@ -56,3 +48,4 @@ submitBtn.addEventListener("click", async function(event){
 //     }
 //   }
 // });
+
