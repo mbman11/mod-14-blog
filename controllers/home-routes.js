@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const Blog = require('../models/Blog')
-// const Blog = require('../models/Blog')
+const Users = require('../models/Users')
 
 // route to get all blogs
 router.get('/', async (req, res) => {
@@ -44,6 +44,18 @@ router.get('/dashboard', async (req,res)=>{
   const blogs = blogData.map((blog) => blog.get({ plain: true }));
   res.render('dashboard', {blogs});
   console.log(blogs);
+  
+
+
+
+  const userData = await Users.findAll().catch((err) => { 
+    res.json(err);
+  });
+  const users = userData.map((user) => user.get({ plain: true }));
+  res.setHeader('dashboard', {users});
+  console.log(users);
+
+
   });
 
 
