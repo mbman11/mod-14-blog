@@ -19,6 +19,24 @@ router.post('/', (req, res) => {
     });
 });
 
+router.delete('/delete/:id', (req, res) => {
+  const blogId = req.params.id;
+
+  Blog.destroy({
+    where: { id: blogId }
+  })
+    .then(() => {
+      res.status(204).send();
+    })
+    .catch((err) => {
+      res.status(500).json({ error: "Failed to delete" });
+    });
+});
+
+
+
+
+
 
 
 

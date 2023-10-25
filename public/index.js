@@ -1,59 +1,56 @@
 
-const btn = document.getElementById('newPost-btn');
+const submitBtn = document.getElementById('submit-btn');
 
-btn.addEventListener("click", function(event){
-  console.log('Hello');
-  const newFormHandler = async (event) => {
-    event.preventDefault();
+submitBtn.addEventListener("click", async function(event){
+  console.log("helloo")
+  event.preventDefault();
+
+  const title = document.querySelector('#blog-title').value.trim();
+  const author = document.querySelector('#blog-author').value.trim();
+  const text = document.querySelector('#blog-text').value.trim();
   
-    const title = document.querySelector('#project-name').value.trim();
-    const author = document.querySelector('#project-funding').value.trim();
-    const text = document.querySelector('#project-desc').value.trim();
-  
-    if (title && author && text) {
-      const response = await fetch(`/api/blogs`, {
-        method: 'POST',
-        body: JSON.stringify({ title, author, text }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-  
-      if (response.ok) {
-        document.location.replace('/blogs');
-      } else {
-        alert('Failed to create project');
-      }
+  if (title && author && text) {
+    const response = await fetch(`/api/blogs`, {
+      method: 'POST',
+      body: JSON.stringify({ title, author, text }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      document.location.replace('/');
+      console.log('blog added')
+    } else {
+      alert('Failed to create project');
     }
-  };
-})
+  }
+});
 
-// title and text and author variable to event listener
-// await fetch req /api/blog first arg in fetch
-// then obj w method as POST
-// stringify results
-//
 
-// const newFormHandler = async (event) => {
-//   event.preventDefault();
 
-//   const title = document.querySelector('#project-name').value.trim();
-//   const author = document.querySelector('#project-funding').value.trim();
-//   const text = document.querySelector('#project-desc').value.trim();
+const loginBtn = document.getElementById('login');
 
-//   if (title && author && text) {
-//     const response = await fetch(`/api/blogs`, {
-//       method: 'POST',
-//       body: JSON.stringify({ title, author, text }),
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//     });
+loginBtn.addEventListener("click", async function(event){
+  event.preventDefault();
 
-//     if (response.ok) {
-//       document.location.replace('/blogs');
-//     } else {
-//       alert('Failed to create project');
-//     }
-//   }
-// };
+  const userNameField = document.querySelector('#user-name').value.trim();
+  const passwordField = document.querySelector('#password').value.trim();
+  
+  if (userNameField && passwordField) {
+    const response = await fetch(`/`, {
+      method: 'GET',
+      body: JSON.stringify({ userNameField, passwordField }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      document.location.replace('/');
+      console.log('logged In')
+    } else {
+      alert('Failed to create project');
+    }
+  }
+});

@@ -14,9 +14,6 @@ router.get('/', async (req, res) => {
 
 
 
-
-
-
 // route to get one blog
 router.get('/blogs/:id', async (req, res) => {
   try{ 
@@ -39,10 +36,14 @@ router.get('/blogs/:id', async (req, res) => {
 
 
 
-router.get('/dashboard', (req,res)=>{
-  res.render('dashboard')
-})
-
+router.get('/dashboard', async (req,res)=>{
+  const blogData = await Blog.findAll().catch((err) => { 
+    res.json(err);
+  });
+  const blogs = blogData.map((blog) => blog.get({ plain: true }));
+  res.render('dashboard', {blogs});
+  console.log(blogs);
+  });
 
 
 
@@ -51,6 +52,13 @@ router.get('/dashboard', (req,res)=>{
 router.get('/create-post', (req,res)=>{
   res.render('createPost')
 })
+
+
+
+router.get('/login', (req,res)=>{
+  res.render('login')
+})
+
 
 module.exports = router;
 
