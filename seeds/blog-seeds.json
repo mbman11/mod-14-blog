@@ -1,13 +1,11 @@
 [
   {
-    "id": 1,
     "title": "How To Code",
     "author": "John Foe",
-    "text": "coding is hard... one day ill get it but its pissing me off",
+    "text": "coding is hard...",
     "active": true
   },
   {
-    "id": "2",
     "title": "Do something",
     "author": "Joe Doe",
     "text": "blog about doing something blah blah blah",
