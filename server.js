@@ -1,12 +1,22 @@
 const path = require('path');
 const express = require('express');
 const exphbs = require('express-handlebars');
-const hbs = exphbs.create({});
+const helpers = require('./utils/helpers')
+const hbs = exphbs.create({ helpers });
+session = require('express-session');
 const app = express();
 require("dotenv").config();
 const PORT = process.env.PORT || 3001;
 const sequelize = require('./config/connection');
 
+
+const sess = {
+  secret: 'Super secret secret',
+  resave: false,
+  saveUninitialized: false,
+};
+
+app.use(session(sess));
 
 // use handlebars engine
 app.set('view engine', 'handlebars');

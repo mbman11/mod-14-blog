@@ -10,7 +10,7 @@
     <h2>My Blogs</h2>
 
   {{#each users as |user|}}
-    {{user}}
+    {{user.user_name}}
   {{/each}}
 
 
@@ -28,7 +28,7 @@
             {{blog.title}},
             {{blog.author}},
             {{blog.text}}
-            {{date_created}}
+            {{format_time date_created}}
             <button>delete</button>
     
             {{!-- <button id="delete">delete</button> --}}

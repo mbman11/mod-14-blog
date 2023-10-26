@@ -1,4 +1,4 @@
-const router = require('express').Router();
+ const router = require('express').Router();
 const Blog = require('../models/Blog')
 const Users = require('../models/Users')
 
@@ -9,7 +9,6 @@ router.get('/', async (req, res) => {
     });
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
     res.render('all', {blogs});
-    console.log(blogs);
     });
 
 
@@ -23,10 +22,8 @@ router.get('/blogs/:id', async (req, res) => {
           res.status(404).json({message: 'No blog with this id!'});
           return;
       }
-
       const blogs = blogData.get({ plain: true });
-      console.log(blogs)
-      res.render('blog', blogs);
+      res.render('blogs', {blogs});
     } catch (err) {
         res.status(500).json(err);
     };     
@@ -36,27 +33,24 @@ router.get('/blogs/:id', async (req, res) => {
 
 
 
-
+// route to get dashboard with blogs
 router.get('/dashboard', async (req,res)=>{
   const blogData = await Blog.findAll().catch((err) => { 
     res.json(err);
   });
   const blogs = blogData.map((blog) => blog.get({ plain: true }));
+
+  const userData = await Users.findAll();
+    const users = userData.map((user) => user.get({ plain: true }));
+    console.log(users); // This will log the users to the console
+
   res.render('dashboard', {blogs});
   console.log(blogs);
-  
-
-
-
-  const userData = await Users.findAll().catch((err) => { 
-    res.json(err);
-  });
-  const users = userData.map((user) => user.get({ plain: true }));
-  res.setHeader('dashboard', {users});
-  console.log(users);
-
 
   });
+
+
+
 
 
 
@@ -70,6 +64,11 @@ router.get('/create-post', (req,res)=>{
 
 router.get('/create-user', (req,res)=>{
   res.render('createUser')
+})
+
+
+router.get('/login', (req,res)=>{
+  res.render('login')
 })
 
 

@@ -16,14 +16,15 @@ createAccountBtn.addEventListener("click", async function(event){
       headers: {
         'Content-Type': 'application/json',
       },
+      
     });
 
     if (response.ok) {
       console.log('user added')
-      document.location.replace('/dashboard');
+      document.location.replace('/');
 
     } else {
-      alert('Failed to create project');
+      alert('Failed to create account');
     }
   }
 });
