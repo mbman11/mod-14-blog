@@ -25,8 +25,8 @@ router.post('/', (req, res) => {
 
 router.post('/login', async (req, res) => {
   try {
-    const userData = await Users.findOne({ where: { user_name: req.body.user_name } });
-
+    const userData = await Users.findByPk({ where: { user_name: req.body.user_name } });
+// changed to findByPk from findAll()
     if (!userData) {
       res
         .status(400)

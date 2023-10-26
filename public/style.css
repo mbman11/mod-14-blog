@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+.blogs-content {
+  width: 100vw;
+}
+
 nav {
   background-color: lightblue;
   display: flex;
@@ -16,11 +20,65 @@ ul {
   display: flex;
   gap: 50px;
   list-style: none;
-
-  
 }
 
-/* ul button {
+
+.headings{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+ol li {
+  display: flex;
+  border: solid black .5px;
+  width: 100vw;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  /* background-color: blue; */
+}
 
 
+.deleteBtn {
+  display: flex;
+  /* justify-content: end; */
+}
+
+
+#newPost-btn {
+  padding: 5px;
+  background-color: rgb(157, 219, 157);
+
+}
+
+.buttonDiv {
+  display: flex;
+  justify-content: center;
+}
+
+/* .blog-cont {
+  display: flex;
+  align-items: center;
+  list-style: none;
 } */
+
+
+.form-cont {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+}
+
+.form-cont input {
+  margin-bottom: 10px;
+  height: 30px;
+}
+
+.fields {
+  display: flex;
+  justify-content: center;
+
+}
