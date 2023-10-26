@@ -18,8 +18,14 @@
       <li><a href="/">Home</a></li>
       <li><a href="/dashboard">Dashboard</a></li>
             <li><a href="/create-post">Create Blog Post</a></li>
-      <li><a href="/create-user"><button>Create User</button></a></li>
+      {{#if logged_in}}
+            <li><a href="/logout"><button>logout</button></a></li>
+
+       {{else}}   
+          <li><a href="/create-user"><button>Create User</button></a></li>
       <li><a href="/login"><button>Login</button></a></li>
+
+       {{/if}}
     </ul>
     
   </nav>

@@ -5,12 +5,13 @@ router.post('/', (req, res) => {
   // Use Sequelize's `create()` method to add a row to the table 
   // Similar to `INSERT INTO` in plain SQL
   Users.create({
-    user_name: req.body.user_name,
+    user_name: req.body.userName,
     email: req.body.email,
     password: req.body.password
   })
     .then((newUser) => {
       // Send the newly created row as a JSON object
+      console.log(newUser);
       res.json(newUser);
     })
     .catch((err) => {
@@ -24,9 +25,15 @@ router.post('/', (req, res) => {
 
 
 router.post('/login', async (req, res) => {
+
+  console.log(req.body);
   try {
-    const userData = await Users.findByPk({ where: { user_name: req.body.user_name } });
+    
+    const userData = await Users.findOne({ where: { user_name: req.body.userName } });
 // changed to findByPk from findAll()
+console.log(userData);
+
+
     if (!userData) {
       res
         .status(400)
@@ -51,6 +58,7 @@ router.post('/login', async (req, res) => {
     });
 
   } catch (err) {
+    console.log(err)
     res.status(400).json(err);
   }
 });
