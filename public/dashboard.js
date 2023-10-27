@@ -10,3 +10,4 @@ deleteBlogBtn.addEventListener("click",function(){
 })
 
 
+//delete route for button
