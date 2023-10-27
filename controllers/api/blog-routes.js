@@ -37,7 +37,7 @@ router.delete('/delete/:id', (req, res) => {
 
 
 
-
+// module.exports.variableName = blogId;
 
 
 module.exports = router;
