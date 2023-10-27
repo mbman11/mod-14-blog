@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const Blog = require('../models/Blog')
-const Users = require('../models/Users')
+// const Blog = require('../models/Blog')
+const {Users, Blog} = require('../models/')
 
 // route to get all blogs
 router.get('/', async (req, res) => {
